@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31233517D947013C1C7C4B6B /* Pods_progress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */; };
 		A92AC7254A31CF3E3AF882E5 /* Pods_progressTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F132716E42033E907DB75D /* Pods_progressTests.framework */; };
 		AB5594581FE6A27B58D69DA6 /* Pods_progress_progressUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2909F64532D7E5BC183260 /* Pods_progress_progressUITests.framework */; };
+		E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */; };
+		E149116E249FEAA0004B90AF /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */; };
+		E1491170249FEAB3004B90AF /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116F249FEAB3004B90AF /* Points.swift */; };
 		E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */; };
 		E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */; };
 		E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46C249EB90C000BAFF1 /* ViewController.swift */; };
@@ -47,6 +49,9 @@
 		C5449335A3F05A7221EE8F46 /* Pods-progressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progressTests.debug.xcconfig"; path = "Target Support Files/Pods-progressTests/Pods-progressTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D518E9FB5400F25C09A011E4 /* Pods-progressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progressTests.release.xcconfig"; path = "Target Support Files/Pods-progressTests/Pods-progressTests.release.xcconfig"; sourceTree = "<group>"; };
 		D94409BA233071CDA027B2FD /* Pods-progress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress.release.xcconfig"; path = "Target Support Files/Pods-progress/Pods-progress.release.xcconfig"; sourceTree = "<group>"; };
+		E1255F5D249F312E00AB4E43 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
+		E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		E149116F249FEAB3004B90AF /* Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		E1FBD465249EB90C000BAFF1 /* progress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = progress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31233517D947013C1C7C4B6B /* Pods_progress.framework in Frameworks */,
+				E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +106,6 @@
 				C5449335A3F05A7221EE8F46 /* Pods-progressTests.debug.xcconfig */,
 				D518E9FB5400F25C09A011E4 /* Pods-progressTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -143,6 +147,9 @@
 				E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */,
 				E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */,
 				E1FBD46C249EB90C000BAFF1 /* ViewController.swift */,
+				E149116F249FEAB3004B90AF /* Points.swift */,
+				E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */,
+				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
 				E1FBD46E249EB90C000BAFF1 /* Main.storyboard */,
 				E1FBD471249EB90D000BAFF1 /* Assets.xcassets */,
 				E1FBD473249EB90D000BAFF1 /* LaunchScreen.storyboard */,
@@ -411,6 +418,8 @@
 				E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */,
 				E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */,
 				E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */,
+				E1491170249FEAB3004B90AF /* Points.swift in Sources */,
+				E149116E249FEAA0004B90AF /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +599,9 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = linniergames.progress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -609,7 +620,9 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_BUNDLE_IDENTIFIER = linniergames.progress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

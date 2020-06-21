@@ -6,7 +6,8 @@ target 'progress' do
   use_frameworks!
 
   # Pods for progress
-  pod 'Realm', '~> 5.0.3'
+  pod 'PromisesSwift', '~> 1.2.8'
+  pod 'RealmSwift', '~> 5.0.3'
 
   target 'progressTests' do
     inherit! :search_paths
