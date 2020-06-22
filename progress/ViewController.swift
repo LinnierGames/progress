@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  progress
-//
-//  Created by Erick Sanchez on 6/20/20.
-//  Copyright © 2020 Erick Sanchez. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -16,9 +8,51 @@ class ViewController: UIViewController {
 
   var categories = [Category]()
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    updateUI()
+  }
 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "show detailed event":
+      guard
+        let eventVC = segue.destination as? CategoryViewController,
+        let cell = sender as? UITableViewCell,
+        let indexPath = tableView.indexPath(for: cell)
+      else {
+        fatalError()
+      }
+
+      let category = categories[indexPath.row]
+      eventVC.category = category
+      eventVC.presentationController?.delegate = self
+    default: break
+    }
+  }
+
+  @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue) {
+//    viewWillAppear()
+  }
+
+  @IBAction func pressAddCategory(_ sender: Any) {
+    let alert = UIAlertController(
+      title: "New Category",
+      message: "enter a name",
+      preferredStyle: .alert
+    )
+
+    let categoryTitleTextField = alert.insertTextField { textField in
+      textField.placeholder = "Category title"
+    }
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+      self.createCategory(title: categoryTitleTextField.text.useIfEmptyOrNil("Untitled"))
+    })
+    self.present(alert, animated: true)
+  }
+
+  private func updateUI() {
     categories = realm.objects(CategoryObject.self).map { $0 as Category }
     self.tableView.reloadData()
   }
@@ -34,8 +68,6 @@ class ViewController: UIViewController {
   }
 
   private func createEvent(categoryIndexPath: IndexPath, points: Int, title: String) {
-    guard points > 0 else { return }
-
     try! realm.write {
       let category = self.categories[categoryIndexPath.row] as! CategoryObject
       let newEvent = EventObject()
@@ -69,14 +101,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ViewController: CategoryTableViewCellDelegate {
   func category(_ cell: CategoryTableViewCell, didAddNewEvent points: Int) {
-    let alert = UIAlertController(title: "New Event", message: "enter a title for the event", preferredStyle: .alert)
+    guard points > 0 else { return }
+
+    let alert = UIAlertController(
+      title: "New Event",
+      message: "enter a title for the event",
+      preferredStyle: .alert
+    )
+    let eventTitleTextField = alert.insertTextField { textField in
+      textField.placeholder = "Event title"
+    }
     let pointValueTextField = alert.insertTextField { textField in
       textField.text = String(points)
       textField.placeholder = "Points"
       textField.keyboardType = .numberPad
-    }
-    let eventTitleTextField = alert.insertTextField { textField in
-      textField.placeholder = "Event title"
     }
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
@@ -98,32 +136,11 @@ extension ViewController: CategoryTableViewCellDelegate {
   }
 }
 
-// MARK - IBActions
-
-extension ViewController {
-  @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue) {
-    //    unwindSegue.source.parent?.dismiss(animated: true, completion: nil)
-  }
-
-  @IBAction func pressAddCategory(_ sender: Any) {
-    let alert = UIAlertController(
-      title: "New Category",
-      message: "enter a name",
-      preferredStyle: .alert
-    )
-
-    let categoryTitleTextField = alert.insertTextField { textField in
-      textField.placeholder = "Category title"
-    }
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-      self.createCategory(title: categoryTitleTextField.text.useIfEmptyOrNil("Untitled"))
-    })
-    self.present(alert, animated: true)
+extension ViewController: UIAdaptivePresentationControllerDelegate {
+  func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+    viewWillAppear(true)
   }
 }
-
-
 
 
 
