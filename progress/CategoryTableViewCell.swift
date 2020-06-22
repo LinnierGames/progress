@@ -5,7 +5,7 @@ protocol CategoryTableViewCellDelegate: AnyObject {
 }
 
 class CategoryTableViewCell: UITableViewCell {
-  var rank = Points.Rank(points: 0, pointsToNextLevel: 10, rank: 1)
+  var rank = Points.startingRank()
   weak var delegate: CategoryTableViewCellDelegate?
 
   private var currentProgress: Float {

@@ -9,26 +9,56 @@
 import XCTest
 @testable import progress
 
-class progressTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class PointsTests: XCTestCase {
+  func testRank() {
+    do {
+      let rank = Points.rank(for: 0)
+      XCTAssertEqual(rank.rank, 1)
+      XCTAssertEqual(rank.points, 0)
+      XCTAssertEqual(rank.pointsToNextLevel, 10)
+      XCTAssertEqual(rank.totalPoints, 0)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    do {
+      let rank = Points.rank(for: 8)
+      XCTAssertEqual(rank.rank, 1)
+      XCTAssertEqual(rank.points, 8)
+      XCTAssertEqual(rank.pointsToNextLevel, 10)
+      XCTAssertEqual(rank.totalPoints, 8)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    do {
+      let rank = Points.rank(for: 10)
+      XCTAssertEqual(rank.rank, 2)
+      XCTAssertEqual(rank.points, 0)
+      XCTAssertEqual(rank.pointsToNextLevel, 20)
+      XCTAssertEqual(rank.totalPoints, 10)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    do {
+      let rank = Points.rank(for: 18)
+      XCTAssertEqual(rank.rank, 2)
+      XCTAssertEqual(rank.points, 8)
+      XCTAssertEqual(rank.pointsToNextLevel, 20)
+      XCTAssertEqual(rank.totalPoints, 18)
     }
-
+    do {
+      let rank = Points.rank(for: 28)
+      XCTAssertEqual(rank.rank, 2)
+      XCTAssertEqual(rank.points, 18)
+      XCTAssertEqual(rank.pointsToNextLevel, 20)
+      XCTAssertEqual(rank.totalPoints, 28)
+    }
+    do {
+      let rank = Points.rank(for: 38)
+      XCTAssertEqual(rank.rank, 3)
+      XCTAssertEqual(rank.points, 8)
+      XCTAssertEqual(rank.pointsToNextLevel, 40)
+      XCTAssertEqual(rank.totalPoints, 38)
+    }
+    do {
+      let rank = Points.rank(for: 38)
+      XCTAssertEqual(rank.rank, 3)
+      XCTAssertEqual(rank.points, 8)
+      XCTAssertEqual(rank.pointsToNextLevel, 40)
+      XCTAssertEqual(rank.totalPoints, 38)
+    }
+  }
 }

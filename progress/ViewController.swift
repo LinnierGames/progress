@@ -12,18 +12,41 @@ class ViewController: UIViewController {
 
   @IBOutlet private weak var tableView: UITableView!
 
+  let realm = try! Realm()
+
   var categories = [Category]()
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    categories = realm.objects(CategoryObject.self).map { $0 as Category }
+    self.tableView.reloadData()
+  }
+
   private func createCategory(title: String) {
-    let newCategory = Category(title: title)
-    self.categories.insert(newCategory, at: 0)
+    try! realm.write {
+      let newCategory = CategoryObject()
+      newCategory.title = title
+      realm.add(newCategory)
+      self.categories.insert(newCategory, at: 0)
+    }
     self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
   }
 
   private func createEvent(categoryIndexPath: IndexPath, points: Int, title: String) {
-    let category = self.categories[categoryIndexPath.row]
-    let newEvent = Event(title: title, points: points, timestamp: Date())
-    category.events.insert(newEvent, at: 0)
+    guard points > 0 else { return }
+
+    try! realm.write {
+      let category = self.categories[categoryIndexPath.row] as! CategoryObject
+      let newEvent = EventObject()
+      newEvent.points = points
+      newEvent.title = title
+      newEvent.timestamp = Date()
+      newEvent.category = category
+      category.rawEvents.append(newEvent)
+      realm.add(newEvent)
+    }
+
     self.tableView.reloadRows(at: [categoryIndexPath], with: .automatic)
   }
 }
@@ -75,32 +98,6 @@ extension ViewController: CategoryTableViewCellDelegate {
   }
 }
 
-extension UIAlertController {
-  func insertTextField(_ config: ((UITextField) -> Void)? = nil) -> UITextField {
-    var tf: UITextField! = nil
-    let _: Void = self.addTextField { textField in
-      config?(textField)
-      tf = textField
-    }
-
-    return tf
-  }
-}
-
-extension String {
-  func useIfEmpty(_ string: String) -> String {
-    guard self.isEmpty == false else { return string }
-    return self
-  }
-}
-
-extension Optional where Wrapped == String {
-  func useIfEmptyOrNil(_ string: String) -> String {
-    guard let self = self else { return string }
-    return self.useIfEmpty(string)
-  }
-}
-
 // MARK - IBActions
 
 extension ViewController {
@@ -109,7 +106,46 @@ extension ViewController {
   }
 
   @IBAction func pressAddCategory(_ sender: Any) {
-    // TODO: create alert
-    self.createCategory(title: "Foobar")
+    let alert = UIAlertController(
+      title: "New Category",
+      message: "enter a name",
+      preferredStyle: .alert
+    )
+
+    let categoryTitleTextField = alert.insertTextField { textField in
+      textField.placeholder = "Category title"
+    }
+    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+      self.createCategory(title: categoryTitleTextField.text.useIfEmptyOrNil("Untitled"))
+    })
+    self.present(alert, animated: true)
   }
+}
+
+
+
+
+
+
+
+import RealmSwift
+
+class CategoryObject: Object {
+  @objc dynamic var title: String = ""
+  let rawEvents = List<EventObject>()
+}
+extension CategoryObject: Category {
+  var events: [Event] {
+    self.rawEvents.map { $0 as Event }
+  }
+}
+
+class EventObject: Object {
+  @objc dynamic var title = ""
+  @objc dynamic var points = 0
+  @objc dynamic var timestamp = Date()
+  dynamic var category: Category?
+}
+extension EventObject: Event {
 }

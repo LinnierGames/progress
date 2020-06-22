@@ -12,6 +12,7 @@
 		E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */; };
 		E149116E249FEAA0004B90AF /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */; };
 		E1491170249FEAB3004B90AF /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116F249FEAB3004B90AF /* Points.swift */; };
+		E1491172249FEB84004B90AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1491171249FEB84004B90AF /* Extensions.swift */; };
 		E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */; };
 		E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */; };
 		E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46C249EB90C000BAFF1 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		E1255F5D249F312E00AB4E43 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
 		E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E149116F249FEAB3004B90AF /* Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
+		E1491171249FEB84004B90AF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E1FBD465249EB90C000BAFF1 /* progress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = progress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */,
 				E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */,
 				E1FBD46C249EB90C000BAFF1 /* ViewController.swift */,
+				E1491171249FEB84004B90AF /* Extensions.swift */,
 				E149116F249FEAB3004B90AF /* Points.swift */,
 				E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */,
 				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */,
+				E1491172249FEB84004B90AF /* Extensions.swift in Sources */,
 				E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */,
 				E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */,
 				E1491170249FEAB3004B90AF /* Points.swift in Sources */,
@@ -596,6 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = progress/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,6 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = progress/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
