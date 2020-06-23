@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
@@ -31,24 +32,12 @@ class ViewController: UIViewController {
     }
   }
 
-  @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue) {
-//    viewWillAppear()
-  }
+  @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue) {}
 
   @IBAction func pressAddCategory(_ sender: Any) {
-    let alert = UIAlertController(
-      title: "New Category",
-      message: "enter a name",
-      preferredStyle: .alert
-    )
-
-    let categoryTitleTextField = alert.insertTextField { textField in
-      textField.placeholder = "Category title"
+    let alert = UIAlertController.createCategory { title in
+      self.createCategory(title: title.useIfEmpty("Untitled"))
     }
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-      self.createCategory(title: categoryTitleTextField.text.useIfEmptyOrNil("Untitled"))
-    })
     self.present(alert, animated: true)
   }
 
@@ -103,24 +92,8 @@ extension ViewController: CategoryTableViewCellDelegate {
   func category(_ cell: CategoryTableViewCell, didAddNewEvent points: Int) {
     guard points > 0 else { return }
 
-    let alert = UIAlertController(
-      title: "New Event",
-      message: "enter a title for the event",
-      preferredStyle: .alert
-    )
-    let eventTitleTextField = alert.insertTextField { textField in
-      textField.placeholder = "Event title"
-    }
-    let pointValueTextField = alert.insertTextField { textField in
-      textField.text = String(points)
-      textField.placeholder = "Points"
-      textField.keyboardType = .numberPad
-    }
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
+    let alert = UIAlertController.createEvent(title: "", points: points) { title, points in
       guard
-        let pointsString = pointValueTextField.text,
-        let points = Int(pointsString),
         let indexPath = self.tableView.indexPath(for: cell)
       else {
         return
@@ -129,9 +102,9 @@ extension ViewController: CategoryTableViewCellDelegate {
       self.createEvent(
         categoryIndexPath: indexPath,
         points: points,
-        title: eventTitleTextField.text.useIfEmptyOrNil("Untitled")
+        title: title.useIfEmpty("Untitled")
       )
-    })
+    }
     self.present(alert, animated: true)
   }
 }
@@ -146,23 +119,4 @@ extension ViewController: UIAdaptivePresentationControllerDelegate {
 
 
 
-import RealmSwift
 
-class CategoryObject: Object {
-  @objc dynamic var title: String = ""
-  let rawEvents = List<EventObject>()
-}
-extension CategoryObject: Category {
-  var events: [Event] {
-    self.rawEvents.map { $0 as Event }
-  }
-}
-
-class EventObject: Object {
-  @objc dynamic var title = ""
-  @objc dynamic var points = 0
-  @objc dynamic var timestamp = Date()
-  dynamic var category: Category?
-}
-extension EventObject: Event {
-}

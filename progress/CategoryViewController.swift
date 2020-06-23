@@ -20,19 +20,14 @@ class CategoryViewController: UIViewController {
   }
 
   @IBAction func pressModify(_ sender: Any) {
-    let alert = UIAlertController(title: "Modify Category", message: nil, preferredStyle: .alert)
-
-    let categoryTitleTextField = alert.insertTextField { textField in
-      textField.text = self.category.title
-      textField.placeholder = "Category title"
+    let alert = UIAlertController.modifyCategory(title: category.title) { action in
+      switch action {
+      case .update(let newTitle):
+        self.updateTitle(newTitle.useIfEmpty("Untitled"))
+      case .delete:
+        self.deleteCategory()
+      }
     }
-    alert.addAction(UIAlertAction(title: "Save", style: .default) { _ in
-      self.updateTitle(categoryTitleTextField.text.useIfEmptyOrNil("Untitled"))
-    })
-    alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
-      self.deleteCategory()
-    })
-    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     self.present(alert, animated: true)
   }
 
@@ -83,7 +78,55 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
 
     let event = category.events[indexPath.row]
     cell.configure(event)
+    cell.accessoryType = .disclosureIndicator
 
     return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let event = category.events[indexPath.row]
+    let alert = UIAlertController.modifyEvent(title: event.title, points: event.points) { action in
+      switch action {
+      case .update(let newTitle, let newPoints):
+        if let object = event as? EventObject {
+          let realm = try! Realm()
+          try! realm.write {
+            object.title = newTitle
+            object.points = newPoints
+          }
+
+          tableView.reloadRows(at: [indexPath], with: .automatic)
+          self.updateUI()
+        }
+      case .delete:
+        if let object = event as? EventObject {
+          let realm = try! Realm()
+          try! realm.write {
+            realm.delete(object)
+          }
+
+          tableView.deleteRows(at: [indexPath], with: .automatic)
+          self.updateUI()
+        }
+      }
+    }
+    present(alert, animated: true)
+  }
+
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    switch editingStyle {
+    case .delete:
+      let event = category.events[indexPath.row]
+      if let object = event as? EventObject {
+        let realm = try! Realm()
+        try! realm.write {
+          realm.delete(object)
+        }
+
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        self.updateUI()
+      }
+    default: break
+    }
   }
 }

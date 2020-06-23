@@ -15,6 +15,8 @@
 		E1491172249FEB84004B90AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1491171249FEB84004B90AF /* Extensions.swift */; };
 		E149117424A05C09004B90AF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149117324A05C09004B90AF /* CategoryViewController.swift */; };
 		E149117624A06081004B90AF /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149117524A06081004B90AF /* EventTableViewCell.swift */; };
+		E196664E24A1A18400B4AD07 /* UIAlertController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */; };
+		E196665024A1A19F00B4AD07 /* Points+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664F24A1A19F00B4AD07 /* Points+Realm.swift */; };
 		E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */; };
 		E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */; };
 		E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46C249EB90C000BAFF1 /* ViewController.swift */; };
@@ -58,6 +60,8 @@
 		E1491171249FEB84004B90AF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E149117324A05C09004B90AF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E149117524A06081004B90AF /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Progress.swift"; sourceTree = "<group>"; };
+		E196664F24A1A19F00B4AD07 /* Points+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points+Realm.swift"; sourceTree = "<group>"; };
 		E1FBD465249EB90C000BAFF1 /* progress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = progress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 				E149117324A05C09004B90AF /* CategoryViewController.swift */,
 				E1491171249FEB84004B90AF /* Extensions.swift */,
 				E149116F249FEAB3004B90AF /* Points.swift */,
+				E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */,
+				E196664F24A1A19F00B4AD07 /* Points+Realm.swift */,
 				E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */,
 				E149117524A06081004B90AF /* EventTableViewCell.swift */,
 				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
@@ -428,7 +434,9 @@
 				E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */,
 				E1491172249FEB84004B90AF /* Extensions.swift in Sources */,
 				E149117424A05C09004B90AF /* CategoryViewController.swift in Sources */,
+				E196664E24A1A18400B4AD07 /* UIAlertController+Progress.swift in Sources */,
 				E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */,
+				E196665024A1A19F00B4AD07 /* Points+Realm.swift in Sources */,
 				E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */,
 				E1491170249FEAB3004B90AF /* Points.swift in Sources */,
 				E149116E249FEAA0004B90AF /* CategoryTableViewCell.swift in Sources */,
