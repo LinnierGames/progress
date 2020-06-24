@@ -53,6 +53,7 @@ class Points {
 protocol Category {
   var title: String { get }
   var events: [Event] { get }
+  var rewards: [Reward] { get }
 
 //  init(title: String) {
 //    self.title = title
@@ -75,4 +76,10 @@ protocol Event {
 //    self.points = points
 //    self.timestamp = timestamp
 //  }
+}
+
+protocol Reward {
+  var title: String { get }
+  var points: Int { get }
+  var isOneTimeReward: Bool { get }
 }
