@@ -1,33 +1,33 @@
 import RealmSwift
 
-class CategoryObject: Object {
-  @objc dynamic var title: String = ""
-  let rawEvents = List<EventObject>()
-  let rawRewards = List<RewardObject>()
+public class CategoryObject: Object {
+  @objc dynamic public var title: String = ""
+  public let rawEvents = List<EventObject>()
+  public let rawRewards = List<RewardObject>()
 }
 extension CategoryObject: Category {
-  var events: [Event] {
+  public var events: [Event] {
     self.rawEvents.map { $0 as Event }
   }
-  var rewards: [Reward] {
+  public var rewards: [Reward] {
     self.rawRewards.map { $0 as Reward }
   }
 }
 
-class EventObject: Object {
-  @objc dynamic var title = ""
-  @objc dynamic var points = 0
-  @objc dynamic var timestamp = Date()
-  dynamic var category: Category?
+public class EventObject: Object {
+  @objc dynamic public var title = ""
+  @objc dynamic public var points = 0
+  @objc dynamic public var timestamp = Date()
+  dynamic public var category: Category?
 }
 extension EventObject: Event {
 }
 
-class RewardObject: Object {
-  @objc dynamic var title = ""
-  @objc dynamic var points = 0
-  @objc dynamic var isOneTimeReward = false
-  dynamic var category: Category?
+public class RewardObject: Object {
+  @objc dynamic public var title = ""
+  @objc dynamic public var points = 0
+  @objc dynamic public var isOneTimeReward = false
+  dynamic public var category: Category?
 }
 extension RewardObject: Reward {
 }

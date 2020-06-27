@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E153726624A7CB7D00BACA19"
-               BuildableName = "Points.framework"
-               BlueprintName = "Points"
+               BuildableName = "PointsService.framework"
+               BlueprintName = "PointsService"
                ReferencedContainer = "container:progress.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E153726624A7CB7D00BACA19"
-            BuildableName = "Points.framework"
-            BlueprintName = "Points"
+            BuildableName = "PointsService.framework"
+            BlueprintName = "PointsService"
             ReferencedContainer = "container:progress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

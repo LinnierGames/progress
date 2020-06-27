@@ -1,9 +1,9 @@
 import UIKit
 import RealmSwift
-import Points
+import PointsService
 
 class CategoryViewController: UIViewController {
-  var category: Category!
+  var category: PointsService.Category!
 
   @IBOutlet weak var labelRank: UILabel!
   @IBOutlet weak var labelTitle: UILabel!

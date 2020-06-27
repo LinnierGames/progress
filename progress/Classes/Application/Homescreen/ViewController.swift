@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import PointsService
 
 class ViewController: UIViewController {
 
@@ -7,7 +8,7 @@ class ViewController: UIViewController {
 
   let realm = try! Realm()
 
-  var categories = [Category]()
+  var categories = [PointsService.Category]()
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
   private func updateUI() {
     categories = realm.objects(CategoryObject.self)
       .sorted(byKeyPath: "title")
-      .map { $0 as Category }
+      .map { $0 as PointsService.Category }
     self.tableView.reloadData()
   }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56D3653F79A657B2610C70C6 /* Pods_progress_Points.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B1E6D3A7CFB2EB948863EE /* Pods_progress_Points.framework */; };
 		A92AC7254A31CF3E3AF882E5 /* Pods_progressTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8F132716E42033E907DB75D /* Pods_progressTests.framework */; };
 		AB5594581FE6A27B58D69DA6 /* Pods_progress_progressUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2909F64532D7E5BC183260 /* Pods_progress_progressUITests.framework */; };
 		E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */; };
@@ -14,10 +15,10 @@
 		E1491172249FEB84004B90AF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1491171249FEB84004B90AF /* Extensions.swift */; };
 		E149117424A05C09004B90AF /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149117324A05C09004B90AF /* CategoryViewController.swift */; };
 		E149117624A06081004B90AF /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149117524A06081004B90AF /* EventTableViewCell.swift */; };
-		E153727024A7CB7D00BACA19 /* Points.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* Points.framework */; };
+		E153727024A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
 		E153727724A7CB7D00BACA19 /* PointsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153727624A7CB7D00BACA19 /* PointsServiceTests.swift */; };
-		E153727C24A7CB7D00BACA19 /* Points.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* Points.framework */; };
-		E153727D24A7CB7D00BACA19 /* Points.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* Points.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E153727C24A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
+		E153727D24A7CB7D00BACA19 /* PointsService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E153728524A7CBAE00BACA19 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116F249FEAB3004B90AF /* Points.swift */; };
 		E153728624A7CBAE00BACA19 /* PointsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11693DC24A3D822005E1C0E /* PointsDataSource.swift */; };
 		E153728724A7CC1400BACA19 /* Points+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664F24A1A19F00B4AD07 /* Points+Realm.swift */; };
@@ -77,7 +78,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E153727D24A7CB7D00BACA19 /* Points.framework in Embed Frameworks */,
+				E153727D24A7CB7D00BACA19 /* PointsService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,14 +86,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2DED86E52D350F4BE72F5027 /* Pods-progress-Points.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress-Points.debug.xcconfig"; path = "Target Support Files/Pods-progress-Points/Pods-progress-Points.debug.xcconfig"; sourceTree = "<group>"; };
 		3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_progress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BED05EBA2A97E69B4D09E41 /* Pods-progress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress.debug.xcconfig"; path = "Target Support Files/Pods-progress/Pods-progress.debug.xcconfig"; sourceTree = "<group>"; };
 		484D8FDB2BB12817F012C582 /* Pods-progress-progressUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress-progressUITests.debug.xcconfig"; path = "Target Support Files/Pods-progress-progressUITests/Pods-progress-progressUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		705932ED7E0394A36DBEF184 /* Pods-Points.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Points.debug.xcconfig"; path = "Target Support Files/Pods-Points/Pods-Points.debug.xcconfig"; sourceTree = "<group>"; };
+		925391D7A9F240F29428D5B0 /* Pods-Points.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Points.release.xcconfig"; path = "Target Support Files/Pods-Points/Pods-Points.release.xcconfig"; sourceTree = "<group>"; };
 		9AC70BABE11D1B4F5ABFD3C2 /* Pods-progress-progressUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress-progressUITests.release.xcconfig"; path = "Target Support Files/Pods-progress-progressUITests/Pods-progress-progressUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A8F132716E42033E907DB75D /* Pods_progressTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_progressTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2909F64532D7E5BC183260 /* Pods_progress_progressUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_progress_progressUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5449335A3F05A7221EE8F46 /* Pods-progressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progressTests.debug.xcconfig"; path = "Target Support Files/Pods-progressTests/Pods-progressTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D518E9FB5400F25C09A011E4 /* Pods-progressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progressTests.release.xcconfig"; path = "Target Support Files/Pods-progressTests/Pods-progressTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5B1E6D3A7CFB2EB948863EE /* Pods_progress_Points.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_progress_Points.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94409BA233071CDA027B2FD /* Pods-progress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress.release.xcconfig"; path = "Target Support Files/Pods-progress/Pods-progress.release.xcconfig"; sourceTree = "<group>"; };
 		E11693DC24A3D822005E1C0E /* PointsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsDataSource.swift; sourceTree = "<group>"; };
 		E1255F5D249F312E00AB4E43 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
@@ -101,7 +106,7 @@
 		E1491171249FEB84004B90AF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E149117324A05C09004B90AF /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E149117524A06081004B90AF /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
-		E153726724A7CB7D00BACA19 /* Points.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Points.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E153726724A7CB7D00BACA19 /* PointsService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PointsService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E153726A24A7CB7D00BACA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E153726F24A7CB7D00BACA19 /* PointsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E153727624A7CB7D00BACA19 /* PointsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsServiceTests.swift; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 		E1FBD486249EB90D000BAFF1 /* progressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = progressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FBD48A249EB90D000BAFF1 /* progressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressUITests.swift; sourceTree = "<group>"; };
 		E1FBD48C249EB90D000BAFF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6794B01112AD72423B0C66B /* Pods-progress-Points.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress-Points.release.xcconfig"; path = "Target Support Files/Pods-progress-Points/Pods-progress-Points.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56D3653F79A657B2610C70C6 /* Pods_progress_Points.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E153727024A7CB7D00BACA19 /* Points.framework in Frameworks */,
+				E153727024A7CB7D00BACA19 /* PointsService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */,
-				E153727C24A7CB7D00BACA19 /* Points.framework in Frameworks */,
+				E153727C24A7CB7D00BACA19 /* PointsService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +186,10 @@
 				9AC70BABE11D1B4F5ABFD3C2 /* Pods-progress-progressUITests.release.xcconfig */,
 				C5449335A3F05A7221EE8F46 /* Pods-progressTests.debug.xcconfig */,
 				D518E9FB5400F25C09A011E4 /* Pods-progressTests.release.xcconfig */,
+				705932ED7E0394A36DBEF184 /* Pods-Points.debug.xcconfig */,
+				925391D7A9F240F29428D5B0 /* Pods-Points.release.xcconfig */,
+				2DED86E52D350F4BE72F5027 /* Pods-progress-Points.debug.xcconfig */,
+				F6794B01112AD72423B0C66B /* Pods-progress-Points.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 				3A74A5FE3451C0D1B50B4916 /* Pods_progress.framework */,
 				AF2909F64532D7E5BC183260 /* Pods_progress_progressUITests.framework */,
 				A8F132716E42033E907DB75D /* Pods_progressTests.framework */,
+				D5B1E6D3A7CFB2EB948863EE /* Pods_progress_Points.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,7 +322,7 @@
 				E1FBD465249EB90C000BAFF1 /* progress.app */,
 				E1FBD47B249EB90D000BAFF1 /* progressTests.xctest */,
 				E1FBD486249EB90D000BAFF1 /* progressUITests.xctest */,
-				E153726724A7CB7D00BACA19 /* Points.framework */,
+				E153726724A7CB7D00BACA19 /* PointsService.framework */,
 				E153726F24A7CB7D00BACA19 /* PointsTests.xctest */,
 			);
 			name = Products;
@@ -356,10 +368,11 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E153726624A7CB7D00BACA19 /* Points */ = {
+		E153726624A7CB7D00BACA19 /* PointsService */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E153727E24A7CB7D00BACA19 /* Build configuration list for PBXNativeTarget "Points" */;
+			buildConfigurationList = E153727E24A7CB7D00BACA19 /* Build configuration list for PBXNativeTarget "PointsService" */;
 			buildPhases = (
+				CDFEC69AB0B2275D2A11C81D /* [CP] Check Pods Manifest.lock */,
 				E153726224A7CB7D00BACA19 /* Headers */,
 				E153726324A7CB7D00BACA19 /* Sources */,
 				E153726424A7CB7D00BACA19 /* Frameworks */,
@@ -369,9 +382,9 @@
 			);
 			dependencies = (
 			);
-			name = Points;
+			name = PointsService;
 			productName = PointsService;
-			productReference = E153726724A7CB7D00BACA19 /* Points.framework */;
+			productReference = E153726724A7CB7D00BACA19 /* PointsService.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E153726E24A7CB7D00BACA19 /* PointsTests */ = {
@@ -499,7 +512,7 @@
 				E1FBD464249EB90C000BAFF1 /* progress */,
 				E1FBD47A249EB90D000BAFF1 /* progressTests */,
 				E1FBD485249EB90D000BAFF1 /* progressUITests */,
-				E153726624A7CB7D00BACA19 /* Points */,
+				E153726624A7CB7D00BACA19 /* PointsService */,
 				E153726E24A7CB7D00BACA19 /* PointsTests */,
 			);
 		};
@@ -608,6 +621,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CDFEC69AB0B2275D2A11C81D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-progress-Points-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DD2BE3EE825069DEE2A393C1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -704,7 +739,7 @@
 /* Begin PBXTargetDependency section */
 		E153727224A7CB7D00BACA19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E153726624A7CB7D00BACA19 /* Points */;
+			target = E153726624A7CB7D00BACA19 /* PointsService */;
 			targetProxy = E153727124A7CB7D00BACA19 /* PBXContainerItemProxy */;
 		};
 		E153727424A7CB7D00BACA19 /* PBXTargetDependency */ = {
@@ -714,7 +749,7 @@
 		};
 		E153727B24A7CB7D00BACA19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E153726624A7CB7D00BACA19 /* Points */;
+			target = E153726624A7CB7D00BACA19 /* PointsService */;
 			targetProxy = E153727A24A7CB7D00BACA19 /* PBXContainerItemProxy */;
 		};
 		E1FBD47D249EB90D000BAFF1 /* PBXTargetDependency */ = {
@@ -751,6 +786,7 @@
 /* Begin XCBuildConfiguration section */
 		E153727F24A7CB7D00BACA19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DED86E52D350F4BE72F5027 /* Pods-progress-Points.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -779,6 +815,7 @@
 		};
 		E153728024A7CB7D00BACA19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6794B01112AD72423B0C66B /* Pods-progress-Points.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1096,7 +1133,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E153727E24A7CB7D00BACA19 /* Build configuration list for PBXNativeTarget "Points" */ = {
+		E153727E24A7CB7D00BACA19 /* Build configuration list for PBXNativeTarget "PointsService" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E153727F24A7CB7D00BACA19 /* Debug */,

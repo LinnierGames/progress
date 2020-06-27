@@ -1,5 +1,5 @@
 import UIKit
-import Points
+import PointsService
 
 protocol CategoryTableViewCellDelegate: AnyObject {
   func category(_ cell: CategoryTableViewCell, didAddNewEvent points: Int)
@@ -28,7 +28,7 @@ class CategoryTableViewCell: UITableViewCell {
     self.commonInit()
   }
 
-  func configure(_ category: Category) {
+  func configure(_ category: PointsService.Category) {
     self.rank = Points.rank(for: category.points)
     self.labelTitle.text = category.title
     self.updateUI()
