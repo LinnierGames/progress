@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    tableView.contentInset.bottom = 36 + 8
+    tableView.verticalScrollIndicatorInsets.bottom = 36
     updateUI()
   }
 
@@ -42,7 +44,9 @@ class ViewController: UIViewController {
   }
 
   private func updateUI() {
-    categories = realm.objects(CategoryObject.self).map { $0 as Category }
+    categories = realm.objects(CategoryObject.self)
+      .sorted(byKeyPath: "title")
+      .map { $0 as Category }
     self.tableView.reloadData()
   }
 

@@ -268,7 +268,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qvg-hy-CWd">
                                                                     <rect key="frame" x="8" y="8" width="112" height="112"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-ca-Ir3">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHr-ca-Ir3">
                                                                             <rect key="frame" x="0.0" y="0.0" width="112" height="80.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -463,7 +463,9 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="p0J-vG-vcJ" secondAttribute="bottom" id="0y4-KJ-yT3"/>
+                            <constraint firstItem="rII-a2-mjN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h6V-5d-Ng4" secondAttribute="trailing" constant="8" id="98i-Y5-rQI"/>
                             <constraint firstItem="WBm-wS-xXH" firstAttribute="centerX" secondItem="p0J-vG-vcJ" secondAttribute="centerX" id="O3X-QE-LWi"/>
+                            <constraint firstItem="OYx-Zh-v45" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rII-a2-mjN" secondAttribute="trailing" constant="8" id="VZC-gI-OeF"/>
                             <constraint firstItem="p0J-vG-vcJ" firstAttribute="leading" secondItem="M9J-Cw-kYq" secondAttribute="leading" id="a47-Fm-BWu"/>
                             <constraint firstItem="p0J-vG-vcJ" firstAttribute="height" secondItem="wPE-sa-dU3" secondAttribute="height" multiplier="4:5" id="bst-O3-WQL"/>
                             <constraint firstItem="WBm-wS-xXH" firstAttribute="bottom" secondItem="p0J-vG-vcJ" secondAttribute="top" constant="32" id="cim-8E-DjO"/>

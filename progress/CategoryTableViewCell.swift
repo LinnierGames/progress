@@ -33,11 +33,21 @@ class CategoryTableViewCell: UITableViewCell {
     self.updateUI()
   }
 
+  override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    guard let pan = gestureRecognizer as? UIPanGestureRecognizer else { return true }
+    return self.isGestureVertical(pan) == false//else { self.cancelGesture(gesture); return }
+  }
+
+  override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return false
+  }
+
   private func commonInit() {
     let panGesture = UIPanGestureRecognizer(
       target: self,
       action: #selector(CategoryTableViewCell.panGesture(_:))
     )
+    panGesture.delegate = self
     self.addGestureRecognizer(panGesture)
   }
 
@@ -68,14 +78,31 @@ class CategoryTableViewCell: UITableViewCell {
     }
   }
 
+  private func isGestureVertical(_ gesture: UIPanGestureRecognizer) -> Bool {
+    let yTranslation = gesture.translation(in: self.superview).y
+    return abs(yTranslation) > 5
+  }
+
+  private func cancelGesture(_ gesture: UIPanGestureRecognizer) {
+    gesture.isEnabled = false
+    gesture.isEnabled = true
+  }
+
   private func beginAddingAnEvent() {
     // TODO: update UI with number badge
   }
 
+  private var lastPoint: Int?
   private func updateAddedEvent(gesture: UIPanGestureRecognizer) {
     let pointsDiff = self.pointsDiff(fromPanGesture: gesture)
 
     // TODO: update UI with points
+
+    if pointsDiff != lastPoint {
+      let generator = UIImpactFeedbackGenerator(style: .medium)
+      generator.impactOccurred()
+    }
+    self.lastPoint = pointsDiff
 
     self.updateUI(pointsOffset: pointsDiff)
   }
