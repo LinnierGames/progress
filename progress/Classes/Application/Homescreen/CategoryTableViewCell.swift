@@ -1,4 +1,5 @@
 import UIKit
+import Points
 
 protocol CategoryTableViewCellDelegate: AnyObject {
   func category(_ cell: CategoryTableViewCell, didAddNewEvent points: Int)

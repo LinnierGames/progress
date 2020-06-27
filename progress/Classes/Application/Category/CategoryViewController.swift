@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import Points
 
 class CategoryViewController: UIViewController {
   var category: Category!

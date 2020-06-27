@@ -1,4 +1,5 @@
 import UIKit
+import Points
 
 class EventTableViewCell: UITableViewCell {
   @IBOutlet weak var labelTitle: UILabel!

@@ -1,11 +1,11 @@
 import Foundation
 
-class Points {
-  struct Rank {
-    let rank: Int
-    let points: Int
-    let pointsToNextLevel: Int
-    let totalPoints: Int
+public class Points {
+  public struct Rank {
+    public let rank: Int
+    public let points: Int
+    public let pointsToNextLevel: Int
+    public let totalPoints: Int
 
     fileprivate init(
       rank: Int,
@@ -19,16 +19,16 @@ class Points {
       self.totalPoints = totalPoints
     }
 
-    func display() -> String {
+    public func display() -> String {
       return "lvl \(self.rank)"
     }
   }
 
-  static func startingRank() -> Rank {
+  public static func startingRank() -> Rank {
     return Rank(rank: 1, points: 0, pointsToNextLevel: 10, totalPoints: 0)
   }
 
-  static func rank(for totalPoints: Int) -> Rank {
+  public static func rank(for totalPoints: Int) -> Rank {
     var currentMax = 10, pointsToNextLevel = currentMax
 
     var rank = 1
@@ -50,7 +50,7 @@ class Points {
   }
 }
 
-protocol Category {
+public protocol Category {
   var title: String { get }
   var events: [Event] { get }
   var rewards: [Reward] { get }
@@ -61,12 +61,12 @@ protocol Category {
 }
 
 extension Category {
-  var points: Int {
+  public var points: Int {
     return events.reduce(0, { $0 + $1.points })
   }
 }
 
-protocol Event {
+public protocol Event {
   var title: String { get }
   var points: Int { get }
   var timestamp: Date { get }
@@ -78,7 +78,7 @@ protocol Event {
 //  }
 }
 
-protocol Reward {
+public protocol Reward {
   var title: String { get }
   var points: Int { get }
   var isOneTimeReward: Bool { get }

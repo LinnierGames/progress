@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PointsService.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>progress.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E153726624A7CB7D00BACA19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E153726E24A7CB7D00BACA19</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E1FBD464249EB90C000BAFF1</key>
 		<dict>
 			<key>primary</key>
