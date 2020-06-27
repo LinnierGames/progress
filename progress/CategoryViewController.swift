@@ -20,6 +20,7 @@ class CategoryViewController: UIViewController {
     collectionRewards.delegate = self
     updateUI()
   }
+
   @IBAction func pressModify(_ sender: Any) {
     let alert = UIAlertController.modifyCategory(title: category.title) { action in
       switch action {
@@ -43,10 +44,11 @@ class CategoryViewController: UIViewController {
   @IBAction func pressAddEvent(_ sender: Any) {
     let alert = UIAlertController.createEvent(title: "", points: 0) { title, points in
       self.createEvent(title: title, points: points)
-      self.tableEvents.reloadData()
+      self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
       self.updateUI()
     }
     present(alert, animated: true)
+    UIButton().titleLabel?.numberOfLines = 0
   }
 
   private func updateUI() {
@@ -223,7 +225,7 @@ extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDe
       deleteReward(indexPath: indexPath)
     }
 
-    tableEvents.reloadData()
+    tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     updateUI()
   }
 }
