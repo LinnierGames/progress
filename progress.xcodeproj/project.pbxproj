@@ -131,6 +131,83 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E153724324A7C78500BACA19 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */,
+				E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */,
+				E1FBD46E249EB90C000BAFF1 /* Main.storyboard */,
+				E153724824A7C7FC00BACA19 /* Homescreen */,
+				E153724924A7C80F00BACA19 /* Category */,
+				E153724B24A7C87100BACA19 /* Supporting Files */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		E153724424A7C7A300BACA19 /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				E1491171249FEB84004B90AF /* Extensions.swift */,
+				E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */,
+			);
+			name = CommonUI;
+			sourceTree = "<group>";
+		};
+		E153724524A7C7BD00BACA19 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E153724624A7C7CF00BACA19 /* Points */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		E153724624A7C7CF00BACA19 /* Points */ = {
+			isa = PBXGroup;
+			children = (
+				E149116F249FEAB3004B90AF /* Points.swift */,
+				E11693DC24A3D822005E1C0E /* PointsDataSource.swift */,
+				E153724724A7C7E800BACA19 /* Impl */,
+			);
+			name = Points;
+			sourceTree = "<group>";
+		};
+		E153724724A7C7E800BACA19 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				E196664F24A1A19F00B4AD07 /* Points+Realm.swift */,
+				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
+			);
+			name = Impl;
+			sourceTree = "<group>";
+		};
+		E153724824A7C7FC00BACA19 /* Homescreen */ = {
+			isa = PBXGroup;
+			children = (
+				E1FBD46C249EB90C000BAFF1 /* ViewController.swift */,
+				E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */,
+			);
+			name = Homescreen;
+			sourceTree = "<group>";
+		};
+		E153724924A7C80F00BACA19 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E149117324A05C09004B90AF /* CategoryViewController.swift */,
+				E149117524A06081004B90AF /* EventTableViewCell.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		E153724B24A7C87100BACA19 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1FBD471249EB90D000BAFF1 /* Assets.xcassets */,
+				E1FBD473249EB90D000BAFF1 /* LaunchScreen.storyboard */,
+				E1FBD476249EB90D000BAFF1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E1FBD45C249EB90B000BAFF1 = {
 			isa = PBXGroup;
 			children = (
@@ -156,22 +233,9 @@
 		E1FBD467249EB90C000BAFF1 /* progress */ = {
 			isa = PBXGroup;
 			children = (
-				E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */,
-				E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */,
-				E1FBD46C249EB90C000BAFF1 /* ViewController.swift */,
-				E149117324A05C09004B90AF /* CategoryViewController.swift */,
-				E1491171249FEB84004B90AF /* Extensions.swift */,
-				E149116F249FEAB3004B90AF /* Points.swift */,
-				E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */,
-				E196664F24A1A19F00B4AD07 /* Points+Realm.swift */,
-				E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */,
-				E149117524A06081004B90AF /* EventTableViewCell.swift */,
-				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
-				E11693DC24A3D822005E1C0E /* PointsDataSource.swift */,
-				E1FBD46E249EB90C000BAFF1 /* Main.storyboard */,
-				E1FBD471249EB90D000BAFF1 /* Assets.xcassets */,
-				E1FBD473249EB90D000BAFF1 /* LaunchScreen.storyboard */,
-				E1FBD476249EB90D000BAFF1 /* Info.plist */,
+				E153724324A7C78500BACA19 /* Application */,
+				E153724424A7C7A300BACA19 /* CommonUI */,
+				E153724524A7C7BD00BACA19 /* Services */,
 			);
 			path = progress;
 			sourceTree = "<group>";
