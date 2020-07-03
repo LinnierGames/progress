@@ -24,6 +24,11 @@
 		E153728724A7CC1400BACA19 /* Points+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664F24A1A19F00B4AD07 /* Points+Realm.swift */; };
 		E196664E24A1A18400B4AD07 /* UIAlertController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */; };
 		E1C1C9A324AF05C600870407 /* ProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C1C9A224AF05C600870407 /* ProgressContainerView.swift */; };
+		E1C1C9B224AFA9B400870407 /* ReactiveData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; };
+		E1C1C9B724AFA9B400870407 /* ReactiveDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C1C9B624AFA9B400870407 /* ReactiveDataTests.swift */; };
+		E1C1C9C224AFAA1500870407 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C1C9C124AFAA1500870407 /* Observable.swift */; };
+		E1C1C9C324AFAA7600870407 /* ReactiveData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; };
+		E1C1C9C424AFAA7600870407 /* ReactiveData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */; };
 		E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */; };
 		E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FBD46C249EB90C000BAFF1 /* ViewController.swift */; };
@@ -56,6 +61,20 @@
 			remoteGlobalIDString = E153726624A7CB7D00BACA19;
 			remoteInfo = PointsService;
 		};
+		E1C1C9B324AFA9B400870407 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1FBD45D249EB90B000BAFF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1C1C9A824AFA9B400870407;
+			remoteInfo = ReactiveData;
+		};
+		E1C1C9C524AFAA7600870407 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1FBD45D249EB90B000BAFF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1C1C9A824AFA9B400870407;
+			remoteInfo = ReactiveData;
+		};
 		E1FBD47C249EB90D000BAFF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1FBD45D249EB90B000BAFF1 /* Project object */;
@@ -80,6 +99,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E153727D24A7CB7D00BACA19 /* PointsService.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9C724AFAA7600870407 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E1C1C9C424AFAA7600870407 /* ReactiveData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +149,12 @@
 		E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Progress.swift"; sourceTree = "<group>"; };
 		E196664F24A1A19F00B4AD07 /* Points+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points+Realm.swift"; sourceTree = "<group>"; };
 		E1C1C9A224AF05C600870407 /* ProgressContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressContainerView.swift; sourceTree = "<group>"; };
+		E1C1C9A924AFA9B400870407 /* ReactiveData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1C1C9AC24AFA9B400870407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1C1C9B124AFA9B400870407 /* ReactiveDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1C1C9B624AFA9B400870407 /* ReactiveDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveDataTests.swift; sourceTree = "<group>"; };
+		E1C1C9B824AFA9B400870407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1C1C9C124AFAA1500870407 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		E1FBD465249EB90C000BAFF1 /* progress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = progress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FBD468249EB90C000BAFF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1FBD46A249EB90C000BAFF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FCB93FC096B65B2705739FA /* Pods_PointsService.framework in Frameworks */,
+				E1C1C9C324AFAA7600870407 /* ReactiveData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +187,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E153727024A7CB7D00BACA19 /* PointsService.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9A624AFA9B400870407 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9AE24AFA9B400870407 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1C1C9B224AFA9B400870407 /* ReactiveData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				E153726824A7CB7D00BACA19 /* Points */,
+				E1C1C9AA24AFA9B400870407 /* ReactiveData */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -311,6 +364,33 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		E1C1C9AA24AFA9B400870407 /* ReactiveData */ = {
+			isa = PBXGroup;
+			children = (
+				E1C1C9C124AFAA1500870407 /* Observable.swift */,
+				E1C1C9C024AFA9CB00870407 /* Tests */,
+				E1C1C9AC24AFA9B400870407 /* Info.plist */,
+			);
+			path = ReactiveData;
+			sourceTree = "<group>";
+		};
+		E1C1C9B524AFA9B400870407 /* ReactiveDataTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1C1C9B624AFA9B400870407 /* ReactiveDataTests.swift */,
+				E1C1C9B824AFA9B400870407 /* Info.plist */,
+			);
+			path = ReactiveDataTests;
+			sourceTree = "<group>";
+		};
+		E1C1C9C024AFA9CB00870407 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E1C1C9B524AFA9B400870407 /* ReactiveDataTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		E1FBD45C249EB90B000BAFF1 = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +411,8 @@
 				E1FBD486249EB90D000BAFF1 /* progressUITests.xctest */,
 				E153726724A7CB7D00BACA19 /* PointsService.framework */,
 				E153726F24A7CB7D00BACA19 /* PointsTests.xctest */,
+				E1C1C9A924AFA9B400870407 /* ReactiveData.framework */,
+				E1C1C9B124AFA9B400870407 /* ReactiveDataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,6 +454,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1C1C9A424AFA9B400870407 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -384,10 +473,12 @@
 				E153726324A7CB7D00BACA19 /* Sources */,
 				E153726424A7CB7D00BACA19 /* Frameworks */,
 				E153726524A7CB7D00BACA19 /* Resources */,
+				E1C1C9C724AFAA7600870407 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E1C1C9C624AFAA7600870407 /* PBXTargetDependency */,
 			);
 			name = PointsService;
 			productName = PointsService;
@@ -411,6 +502,42 @@
 			name = PointsTests;
 			productName = PointsServiceTests;
 			productReference = E153726F24A7CB7D00BACA19 /* PointsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1C1C9A824AFA9B400870407 /* ReactiveData */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1C1C9BA24AFA9B400870407 /* Build configuration list for PBXNativeTarget "ReactiveData" */;
+			buildPhases = (
+				E1C1C9A424AFA9B400870407 /* Headers */,
+				E1C1C9A524AFA9B400870407 /* Sources */,
+				E1C1C9A624AFA9B400870407 /* Frameworks */,
+				E1C1C9A724AFA9B400870407 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactiveData;
+			productName = ReactiveData;
+			productReference = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1C1C9B024AFA9B400870407 /* ReactiveDataTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1C1C9BD24AFA9B400870407 /* Build configuration list for PBXNativeTarget "ReactiveDataTests" */;
+			buildPhases = (
+				E1C1C9AD24AFA9B400870407 /* Sources */,
+				E1C1C9AE24AFA9B400870407 /* Frameworks */,
+				E1C1C9AF24AFA9B400870407 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1C1C9B424AFA9B400870407 /* PBXTargetDependency */,
+			);
+			name = ReactiveDataTests;
+			productName = ReactiveDataTests;
+			productReference = E1C1C9B124AFA9B400870407 /* ReactiveDataTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E1FBD464249EB90C000BAFF1 /* progress */ = {
@@ -490,6 +617,13 @@
 						CreatedOnToolsVersion = 11.5;
 						TestTargetID = E1FBD464249EB90C000BAFF1;
 					};
+					E1C1C9A824AFA9B400870407 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					E1C1C9B024AFA9B400870407 = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					E1FBD464249EB90C000BAFF1 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -521,6 +655,8 @@
 				E1FBD485249EB90D000BAFF1 /* progressUITests */,
 				E153726624A7CB7D00BACA19 /* PointsService */,
 				E153726E24A7CB7D00BACA19 /* PointsTests */,
+				E1C1C9A824AFA9B400870407 /* ReactiveData */,
+				E1C1C9B024AFA9B400870407 /* ReactiveDataTests */,
 			);
 		};
 /* End PBXProject section */
@@ -534,6 +670,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E153726D24A7CB7D00BACA19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9A724AFA9B400870407 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9AF24AFA9B400870407 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -710,6 +860,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1C1C9A524AFA9B400870407 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1C1C9C224AFAA1500870407 /* Observable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1C1C9AD24AFA9B400870407 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1C1C9B724AFA9B400870407 /* ReactiveDataTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1FBD461249EB90C000BAFF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -759,6 +925,16 @@
 			isa = PBXTargetDependency;
 			target = E153726624A7CB7D00BACA19 /* PointsService */;
 			targetProxy = E153727A24A7CB7D00BACA19 /* PBXContainerItemProxy */;
+		};
+		E1C1C9B424AFA9B400870407 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1C1C9A824AFA9B400870407 /* ReactiveData */;
+			targetProxy = E1C1C9B324AFA9B400870407 /* PBXContainerItemProxy */;
+		};
+		E1C1C9C624AFAA7600870407 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1C1C9A824AFA9B400870407 /* ReactiveData */;
+			targetProxy = E1C1C9C524AFAA7600870407 /* PBXContainerItemProxy */;
 		};
 		E1FBD47D249EB90D000BAFF1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -887,6 +1063,101 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/progress.app/progress";
+			};
+			name = Release;
+		};
+		E1C1C9BB24AFA9B400870407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = progress/Services/ReactiveData/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = linniergames.ReactiveData;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E1C1C9BC24AFA9B400870407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = progress/Services/ReactiveData/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = linniergames.ReactiveData;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E1C1C9BE24AFA9B400870407 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = progress/Services/ReactiveData/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = linniergames.ReactiveDataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1C1C9BF24AFA9B400870407 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = progress/Services/ReactiveData/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = linniergames.ReactiveDataTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1155,6 +1426,24 @@
 			buildConfigurations = (
 				E153728324A7CB7D00BACA19 /* Debug */,
 				E153728424A7CB7D00BACA19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1C1C9BA24AFA9B400870407 /* Build configuration list for PBXNativeTarget "ReactiveData" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1C1C9BB24AFA9B400870407 /* Debug */,
+				E1C1C9BC24AFA9B400870407 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1C1C9BD24AFA9B400870407 /* Build configuration list for PBXNativeTarget "ReactiveDataTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1C1C9BE24AFA9B400870407 /* Debug */,
+				E1C1C9BF24AFA9B400870407 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
