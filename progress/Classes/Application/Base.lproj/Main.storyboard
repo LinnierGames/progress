@@ -118,6 +118,9 @@
                                                                     <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="cbu-hi-y4e" id="6cp-df-MGf"/>
+                                                            </connections>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qFT-Sf-Umt">
                                                             <rect key="frame" x="20" y="11" width="374" height="20.5"/>
@@ -296,22 +299,15 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gvs-bZ-TQ7">
-                                                <rect key="frame" x="0.0" y="58.5" width="386" height="22.5"/>
-                                                <subviews>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cn3-iX-hAb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="386" height="2"/>
-                                                    </progressView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZII-Kb-3Nb">
-                                                        <rect key="frame" x="0.0" y="2" width="386" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="386" placeholderIntrinsicHeight="32" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-JY-OWa" customClass="ProgressContainerView" customModule="progress" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="58.5" width="386" height="92.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="T4y-SP-85L" id="6JP-1f-Mg6"/>
+                                                </connections>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XaB-0C-2bI">
-                                                <rect key="frame" x="0.0" y="106" width="386" height="31"/>
+                                                <rect key="frame" x="0.0" y="176" width="386" height="31"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPi-UC-X3R">
                                                         <rect key="frame" x="0.0" y="0.0" width="386" height="30"/>
@@ -340,7 +336,7 @@
                                                 </subviews>
                                             </stackView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SJR-KL-Vtg">
-                                                <rect key="frame" x="0.0" y="162" width="386" height="132"/>
+                                                <rect key="frame" x="0.0" y="232" width="386" height="132"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="132" id="kwF-rH-2LF"/>
@@ -401,7 +397,7 @@
                                                 </cells>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xex-dH-Sfc">
-                                                <rect key="frame" x="0.0" y="319" width="386" height="31"/>
+                                                <rect key="frame" x="0.0" y="389" width="386" height="31"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bSZ-kN-qit">
                                                         <rect key="frame" x="0.0" y="0.0" width="386" height="30"/>
@@ -430,7 +426,7 @@
                                                 </subviews>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vl4-eX-7LA">
-                                                <rect key="frame" x="0.0" y="375" width="386" height="208.5"/>
+                                                <rect key="frame" x="0.0" y="445" width="386" height="138.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="event" id="Xvw-pe-9kn" customClass="EventTableViewCell" customModule="progress" customModuleProvider="target">
@@ -570,10 +566,9 @@
                     <navigationItem key="navigationItem" id="9bq-h5-lAg"/>
                     <connections>
                         <outlet property="collectionRewards" destination="SJR-KL-Vtg" id="94r-HJ-U8p"/>
-                        <outlet property="labelProgress" destination="ZII-Kb-3Nb" id="tE4-eO-bhg"/>
                         <outlet property="labelRank" destination="XWN-b9-bYi" id="yI1-tW-gKI"/>
                         <outlet property="labelTitle" destination="MAQ-Vj-ypU" id="Tb2-E8-43m"/>
-                        <outlet property="sliderProgress" destination="Cn3-iX-hAb" id="IeK-MS-iqi"/>
+                        <outlet property="progressView" destination="Izh-JY-OWa" id="cGg-KM-Z1D"/>
                         <outlet property="tableEvents" destination="vl4-eX-7LA" id="i4Z-0C-5GG"/>
                     </connections>
                 </viewController>

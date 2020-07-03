@@ -2,13 +2,12 @@ import UIKit
 import RealmSwift
 import PointsService
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
   var category: PointsService.Category!
 
   @IBOutlet weak var labelRank: UILabel!
   @IBOutlet weak var labelTitle: UILabel!
-  @IBOutlet weak var sliderProgress: UIProgressView!
-  @IBOutlet weak var labelProgress: UILabel!
+  @IBOutlet weak var progressView: ProgressContainerView!
   @IBOutlet weak var collectionRewards: UICollectionView!
   @IBOutlet weak var tableEvents: UITableView!
 
@@ -44,7 +43,7 @@ class CategoryViewController: UIViewController {
 
   @IBAction func pressAddEvent(_ sender: Any) {
     let alert = UIAlertController.createEvent(title: "", points: 0) { title, points in
-      self.createEvent(title: title, points: points)
+      self.createEvent(title: title.useIfEmpty("Untitled"), points: points)
       self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
       self.updateUI()
     }
@@ -52,12 +51,26 @@ class CategoryViewController: UIViewController {
     UIButton().titleLabel?.numberOfLines = 0
   }
 
+  // MARK: - ProgressContainerViewDelegate
+
+  func progress(_ view: ProgressContainerView, didAddNewEvent points: Int) {
+    guard points > 0 else { return }
+
+    let alert = UIAlertController.createEvent(title: "", points: points) { title, points in
+      self.createEvent(title: title.useIfEmpty("Untitled"), points: points)
+      self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+      self.updateUI()
+    }
+    self.present(alert, animated: true)
+  }
+
+  // MARK: - Private
+
   private func updateUI() {
     let rank = Points.rank(for: category.points)
     labelRank.text = String(rank.rank)
     labelTitle.text = category.title
-    sliderProgress.progress = 0 // TODO: update progres by creating custom UI element
-    labelProgress.text = ""
+    progressView.set(rank: rank)
   }
 
   private func updateTitle(_ newTitle: String) {
