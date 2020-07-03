@@ -9,7 +9,8 @@ target 'progress' do
   pod 'PromisesSwift', '~> 1.2.8'
   pod 'RealmSwift', '~> 5.0.3'
 
-  target 'Points' do
+  target 'PointsService' do
+    inherit! :search_paths
     pod 'PromisesSwift', '~> 1.2.8'
     pod 'RealmSwift', '~> 5.0.3'
   end
