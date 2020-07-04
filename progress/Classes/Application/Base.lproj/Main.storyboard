@@ -110,14 +110,6 @@
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="H7U-v8-CHz" customClass="ProgressContainerView" customModule="progress" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="11" width="374" height="64.5"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                                                    <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="additionalProgressColor">
-                                                                    <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <outlet property="delegate" destination="cbu-hi-y4e" id="6cp-df-MGf"/>
                                                             </connections>

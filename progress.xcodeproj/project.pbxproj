@@ -18,7 +18,9 @@
 		E149117624A06081004B90AF /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149117524A06081004B90AF /* EventTableViewCell.swift */; };
 		E14DB92724B0067100662628 /* Points+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92524B0066B00662628 /* Points+DI.swift */; };
 		E14DB92A24B0085200662628 /* RealmExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92824B0084D00662628 /* RealmExecutor.swift */; };
-		E14DB92C24B0091A00662628 /* PointsDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92B24B0091A00662628 /* PointsDataSourceImpl.swift */; };
+		E14DB92E24B00D6900662628 /* PointsDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92B24B0091A00662628 /* PointsDataSourceImpl.swift */; };
+		E14DB93024B0222300662628 /* ObservableRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92F24B0222300662628 /* ObservableRealmObject.swift */; };
+		E14DB93324B022F600662628 /* Points+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB93124B022E500662628 /* Points+Observable.swift */; };
 		E153727024A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
 		E153727724A7CB7D00BACA19 /* PointsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153727624A7CB7D00BACA19 /* PointsServiceTests.swift */; };
 		E153727C24A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
@@ -138,7 +140,6 @@
 		D518E9FB5400F25C09A011E4 /* Pods-progressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progressTests.release.xcconfig"; path = "Target Support Files/Pods-progressTests/Pods-progressTests.release.xcconfig"; sourceTree = "<group>"; };
 		D94409BA233071CDA027B2FD /* Pods-progress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-progress.release.xcconfig"; path = "Target Support Files/Pods-progress/Pods-progress.release.xcconfig"; sourceTree = "<group>"; };
 		E11693DC24A3D822005E1C0E /* PointsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsDataSource.swift; sourceTree = "<group>"; };
-		E1255F5D249F312E00AB4E43 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
 		E149116D249FEAA0004B90AF /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		E149116F249FEAB3004B90AF /* Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		E1491171249FEB84004B90AF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -147,6 +148,8 @@
 		E14DB92524B0066B00662628 /* Points+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points+DI.swift"; sourceTree = "<group>"; };
 		E14DB92824B0084D00662628 /* RealmExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExecutor.swift; sourceTree = "<group>"; };
 		E14DB92B24B0091A00662628 /* PointsDataSourceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsDataSourceImpl.swift; sourceTree = "<group>"; };
+		E14DB92F24B0222300662628 /* ObservableRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableRealmObject.swift; sourceTree = "<group>"; };
+		E14DB93124B022E500662628 /* Points+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points+Observable.swift"; sourceTree = "<group>"; };
 		E153726724A7CB7D00BACA19 /* PointsService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PointsService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E153726A24A7CB7D00BACA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E153726F24A7CB7D00BACA19 /* PointsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PointsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,7 +356,7 @@
 			children = (
 				E153727524A7CB7D00BACA19 /* Tests */,
 				E196664F24A1A19F00B4AD07 /* Points+Realm.swift */,
-				E1255F5D249F312E00AB4E43 /* DataLayer.swift */,
+				E14DB93124B022E500662628 /* Points+Observable.swift */,
 				E14DB92B24B0091A00662628 /* PointsDataSourceImpl.swift */,
 			);
 			path = Impl;
@@ -384,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				E1C1C9C124AFAA1500870407 /* Observable.swift */,
+				E14DB92F24B0222300662628 /* ObservableRealmObject.swift */,
 				E14DB92824B0084D00662628 /* RealmExecutor.swift */,
 				E1C1C9C024AFA9CB00870407 /* Tests */,
 				E1C1C9AC24AFA9B400870407 /* Info.plist */,
@@ -890,7 +894,8 @@
 				E153728524A7CBAE00BACA19 /* Points.swift in Sources */,
 				E153728624A7CBAE00BACA19 /* PointsDataSource.swift in Sources */,
 				E14DB92724B0067100662628 /* Points+DI.swift in Sources */,
-				E14DB92C24B0091A00662628 /* PointsDataSourceImpl.swift in Sources */,
+				E14DB92E24B00D6900662628 /* PointsDataSourceImpl.swift in Sources */,
+				E14DB93324B022F600662628 /* Points+Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E14DB92A24B0085200662628 /* RealmExecutor.swift in Sources */,
+				E14DB93024B0222300662628 /* ObservableRealmObject.swift in Sources */,
 				E1C1C9C224AFAA1500870407 /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

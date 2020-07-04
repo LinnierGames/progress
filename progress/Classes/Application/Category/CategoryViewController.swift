@@ -1,6 +1,6 @@
 import UIKit
-import RealmSwift
 import PointsService
+import Combine
 
 class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
   var category: PointsService.Category!
@@ -11,6 +11,9 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
   @IBOutlet weak var collectionRewards: UICollectionView!
   @IBOutlet weak var tableEvents: UITableView!
 
+  private let pointsDataSource = injectPointsDataSource()
+  private var bag = Set<AnyCancellable>()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -18,14 +21,16 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
     tableEvents.delegate = self
     collectionRewards.dataSource = self
     collectionRewards.delegate = self
+
     updateUI()
+    category.didChange.sink(receiveCompletion: { _ in }, receiveValue: updateUI).store(in: &bag)
   }
 
   @IBAction func pressModify(_ sender: Any) {
     let alert = UIAlertController.modifyCategory(title: category.title) { action in
       switch action {
       case .update(let newTitle):
-        self.updateTitle(newTitle.useIfEmpty("Untitled"))
+        _ = self.pointsDataSource.modifyCategory(title: newTitle.useIfEmpty("Untitled"), category: self.category)
       case .delete:
         self.deleteCategory()
       }
@@ -35,17 +40,16 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
 
   @IBAction func pressAddReward(_ sender: Any) {
     let alert = UIAlertController.createReward { title, points in
-      self.createReward(title: title, points: points, isOneTimeReward: false)
-      self.collectionRewards.reloadData()
+      self.pointsDataSource.createReward(title: title, points: points, isOneTimeReward: false, category: self.category)
     }
     present(alert, animated: true)
   }
 
   @IBAction func pressAddEvent(_ sender: Any) {
     let alert = UIAlertController.createEvent(title: "", points: 0) { title, points in
-      self.createEvent(title: title.useIfEmpty("Untitled"), points: points)
-      self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-      self.updateUI()
+      self.pointsDataSource.createEvent(title: title.useIfEmpty("Untitled"), points: points, category: self.category)
+//      self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+//      self.updateUI()
     }
     present(alert, animated: true)
     UIButton().titleLabel?.numberOfLines = 0
@@ -57,9 +61,7 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
     guard points > 0 else { return }
 
     let alert = UIAlertController.createEvent(title: "", points: points) { title, points in
-      self.createEvent(title: title.useIfEmpty("Untitled"), points: points)
-      self.tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-      self.updateUI()
+      self.pointsDataSource.createEvent(title: title.useIfEmpty("Untitled"), points: points, category: self.category)
     }
     self.present(alert, animated: true)
   }
@@ -71,102 +73,16 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
     labelRank.text = String(rank.rank)
     labelTitle.text = category.title
     progressView.set(rank: rank)
-  }
-
-  private func updateTitle(_ newTitle: String) {
-    if let object = category as? CategoryObject {
-      let realm = try! Realm()
-      try! realm.write {
-        object.title = newTitle
-      }
-    }
-
-    updateUI()
+    collectionRewards.reloadData()
+    tableEvents.reloadData()
   }
 
   private func deleteCategory() {
-    if let object = category as? CategoryObject {
-      let realm = try! Realm()
-      try! realm.write {
-        realm.delete(object)
+    pointsDataSource.deleteCategory(category).then {
+      self.presentationController.map {
+        $0.delegate?.presentationControllerWillDismiss?($0)
       }
-    }
-
-    self.presentationController.map {
-      $0.delegate?.presentationControllerWillDismiss?($0)
-    }
-    self.presentingViewController?.dismiss(animated: true)
-  }
-
-  private func createReward(title: String, points: Int, isOneTimeReward: Bool) {
-    guard let category = category as? CategoryObject else { return }
-
-    let realm = try! Realm()
-    try! realm.write {
-      let newReward = RewardObject()
-      newReward.points = points
-      newReward.title = title
-      newReward.isOneTimeReward = isOneTimeReward
-      newReward.category = category
-      category.rawRewards.append(newReward)
-      realm.add(newReward)
-    }
-  }
-
-  private func updateReward(indexPath: IndexPath, title: String, points: Int) {
-    guard let object = category.rewards[indexPath.item] as? RewardObject else { return }
-
-    let realm = try! Realm()
-    try! realm.write {
-      object.title = title
-      object.points = points
-    }
-  }
-
-  private func deleteReward(indexPath: IndexPath) {
-    guard let categoryObject = category as? CategoryObject else { return }
-
-    let rewardObject = categoryObject.rawRewards[indexPath.item]
-    let realm = try! Realm()
-    try! realm.write {
-      categoryObject.rawRewards.remove(at: indexPath.item)
-      realm.delete(rewardObject)
-    }
-  }
-
-  private func createEvent(title: String, points: Int) {
-    guard let category = category as? CategoryObject else { return }
-
-    let realm = try! Realm()
-    try! realm.write {
-      let newEvent = EventObject()
-      newEvent.points = points
-      newEvent.title = title
-      newEvent.timestamp = Date()
-      newEvent.category = category
-      category.rawEvents.insert(newEvent, at: 0)
-      realm.add(newEvent)
-    }
-  }
-
-  private func updateEvent(indexPath: IndexPath, title: String, points: Int) {
-    guard let object = category.events[indexPath.row] as? EventObject else { return }
-
-    let realm = try! Realm()
-    try! realm.write {
-      object.title = title
-      object.points = points
-    }
-  }
-
-  private func deleteEvent(indexPath: IndexPath) {
-    guard let categoryObject = category as? CategoryObject else { return }
-
-    let eventObject = categoryObject.rawEvents[indexPath.row]
-    let realm = try! Realm()
-    try! realm.write {
-      categoryObject.rawEvents.remove(at: indexPath.row)
-      realm.delete(eventObject)
+      self.presentingViewController?.dismiss(animated: true)
     }
   }
 }
@@ -194,13 +110,16 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
     let alert = UIAlertController.modifyEvent(title: event.title, points: event.points) { action in
       switch action {
       case .update(let newTitle, let newPoints):
-        self.updateEvent(indexPath: indexPath, title: newTitle, points: newPoints)
-        self.tableEvents.reloadRows(at: [indexPath], with: .automatic)
-        self.updateUI()
+        let event = self.category.events[indexPath.row]
+        _ = self.pointsDataSource.modifyEvent(title: newTitle, points: newPoints, event: event)
+//        self.tableEvents.reloadRows(at: [indexPath], with: .automatic)
+//        self.updateUI()
       case .delete:
-        self.deleteEvent(indexPath: indexPath)
-        self.tableEvents.deleteRows(at: [indexPath], with: .automatic)
-        self.updateUI()
+        let event = self.category.events[indexPath.row]
+        self.pointsDataSource.deleteEvent(event).then {
+//          self.tableEvents.deleteRows(at: [indexPath], with: .automatic)
+//          self.updateUI()
+        }
       }
     }
     present(alert, animated: true)
@@ -209,9 +128,11 @@ extension CategoryViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     switch editingStyle {
     case .delete:
-      deleteEvent(indexPath: indexPath)
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-      self.updateUI()
+      let event = self.category.events[indexPath.row]
+      self.pointsDataSource.deleteEvent(event).then {
+//        self.tableEvents.deleteRows(at: [indexPath], with: .automatic)
+      }
+//      self.updateUI()
     default: break
     }
   }
@@ -233,14 +154,15 @@ extension CategoryViewController: UICollectionViewDataSource, UICollectionViewDe
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let rewarad = category.rewards[indexPath.item]
-    createEvent(title: rewarad.title, points: rewarad.points)
+    _ = pointsDataSource.createEvent(title: rewarad.title, points: rewarad.points, category: category)
 
     if rewarad.isOneTimeReward {
-      deleteReward(indexPath: indexPath)
+      let reward = category.rewards[indexPath.item]
+      pointsDataSource.deleteReward(reward)
     }
 
-    tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-    updateUI()
+//    tableEvents.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+//    updateUI()
   }
 }
 
@@ -251,9 +173,11 @@ extension CategoryViewController: RewardCollectionViewCellDelegate {
     let alert = UIAlertController.modifyReward(title: reward.title, points: reward.points) { action in
       switch action {
       case .update(let newTitle, let newPoints):
-        self.updateReward(indexPath: indexPath, title: newTitle, points: newPoints)
+        let reward = self.category.rewards[indexPath.item]
+        self.pointsDataSource.modifyReward(title: newTitle, points: newPoints, isOneTimeReward: false, reward: reward)
       case .delete:
-        self.deleteReward(indexPath: indexPath)
+        let reward = self.category.rewards[indexPath.item]
+        self.pointsDataSource.deleteReward(reward)
       }
       self.collectionRewards.reloadData()
     }

@@ -11,7 +11,8 @@ public protocol Observable {
 
 /// Inherit this class on the Impl of public models like PersonImpl
 open class ObservableBase: ObservableBaseHelper {
-  let objectWillChange = PassthroughSubject<Void, ObservableErrors>()
+  public let objectWillChange = PassthroughSubject<Void, ObservableErrors>()
+  public init() {}
 }
 
 public protocol ObservableBaseHelper {

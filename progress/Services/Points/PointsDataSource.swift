@@ -27,7 +27,16 @@ public protocol Reward: Observable {
 }
 
 public protocol PointsDataSource {
-  func categories() -> Promise<[Category]>
   func createCategory(title: String) -> Promise<Void>
+  func categories() -> Promise<[Category]>
+  func modifyCategory(title: String, category: Category) -> Promise<Void>
+  func deleteCategory(_ category: Category) -> Promise<Void>
+
+  func createReward(title: String, points: Int, isOneTimeReward: Bool, category: Category) -> Promise<Void>
+  func modifyReward(title: String, points: Int, isOneTimeReward: Bool, reward: Reward) -> Promise<Void>
+  func deleteReward(_ reward: Reward) -> Promise<Void>
+
   func createEvent(title: String, points: Int, category: Category) -> Promise<Void>
+  func modifyEvent(title: String, points: Int, event: Event) -> Promise<Void>
+  func deleteEvent(_ event: Event) -> Promise<Void>
 }
