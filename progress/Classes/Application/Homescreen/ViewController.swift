@@ -1,14 +1,13 @@
 import UIKit
-import RealmSwift
 import PointsService
 
 class ViewController: UIViewController {
 
   @IBOutlet private weak var tableView: UITableView!
 
-  let realm = try! Realm()
-
   var categories = [PointsService.Category]()
+
+  private let pointsDataSource = injectPointsDataSource()
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -45,35 +44,24 @@ class ViewController: UIViewController {
   }
 
   private func updateUI() {
-    categories = realm.objects(CategoryObject.self)
-      .sorted(byKeyPath: "title")
-      .map { $0 as PointsService.Category }
-    self.tableView.reloadData()
+    pointsDataSource.categories().then { categories in
+      self.categories = categories
+      self.tableView.reloadData()
+    }
   }
 
   private func createCategory(title: String) {
-    try! realm.write {
-      let newCategory = CategoryObject()
-      newCategory.title = title
-      realm.add(newCategory)
-      self.categories.insert(newCategory, at: 0)
+    pointsDataSource.createCategory(title: title).then {
+      self.updateUI()
+//      self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
-    self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
   }
 
   private func createEvent(categoryIndexPath: IndexPath, points: Int, title: String) {
-    try! realm.write {
-      let category = self.categories[categoryIndexPath.row] as! CategoryObject
-      let newEvent = EventObject()
-      newEvent.points = points
-      newEvent.title = title
-      newEvent.timestamp = Date()
-      newEvent.category = category
-      category.rawEvents.append(newEvent)
-      realm.add(newEvent)
+    let category = self.categories[categoryIndexPath.row]
+    pointsDataSource.createEvent(title: title, points: points, category: category).then {
+      self.tableView.reloadRows(at: [categoryIndexPath], with: .automatic)
     }
-
-    self.tableView.reloadRows(at: [categoryIndexPath], with: .automatic)
   }
 }
 
