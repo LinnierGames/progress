@@ -21,6 +21,8 @@
 		E14DB92E24B00D6900662628 /* PointsDataSourceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92B24B0091A00662628 /* PointsDataSourceImpl.swift */; };
 		E14DB93024B0222300662628 /* ObservableRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB92F24B0222300662628 /* ObservableRealmObject.swift */; };
 		E14DB93324B022F600662628 /* Points+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DB93124B022E500662628 /* Points+Observable.swift */; };
+		E1508E2C24B1956700C27A4F /* ReactiveData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; };
+		E1508E2D24B1956700C27A4F /* ReactiveData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E153727024A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
 		E153727724A7CB7D00BACA19 /* PointsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E153727624A7CB7D00BACA19 /* PointsServiceTests.swift */; };
 		E153727C24A7CB7D00BACA19 /* PointsService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E153726724A7CB7D00BACA19 /* PointsService.framework */; };
@@ -46,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E1508E2E24B1956700C27A4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1FBD45D249EB90B000BAFF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1C1C9A824AFA9B400870407;
+			remoteInfo = ReactiveData;
+		};
 		E153727124A7CB7D00BACA19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1FBD45D249EB90B000BAFF1 /* Project object */;
@@ -105,6 +114,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E153727D24A7CB7D00BACA19 /* PointsService.framework in Embed Frameworks */,
+				E1508E2D24B1956700C27A4F /* ReactiveData.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +235,7 @@
 			files = (
 				E1255F5E249FD9F100AB4E43 /* Pods_progress.framework in Frameworks */,
 				E153727C24A7CB7D00BACA19 /* PointsService.framework in Frameworks */,
+				E1508E2C24B1956700C27A4F /* ReactiveData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +588,7 @@
 			);
 			dependencies = (
 				E153727B24A7CB7D00BACA19 /* PBXTargetDependency */,
+				E1508E2F24B1956700C27A4F /* PBXTargetDependency */,
 			);
 			name = progress;
 			productName = progress;
@@ -960,6 +972,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E1508E2F24B1956700C27A4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1C1C9A824AFA9B400870407 /* ReactiveData */;
+			targetProxy = E1508E2E24B1956700C27A4F /* PBXContainerItemProxy */;
+		};
 		E153727224A7CB7D00BACA19 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E153726624A7CB7D00BACA19 /* PointsService */;

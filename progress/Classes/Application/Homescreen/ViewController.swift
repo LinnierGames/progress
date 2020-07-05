@@ -44,7 +44,7 @@ class ViewController: UIViewController {
   }
 
   private func updateUI() {
-    let lower = Date().midnight
+    let lower = Date(timeIntervalSinceNow: 60 * 60 * 24 * -7).midnight
     let upper = Date().endOfDay
     pointsDataSource.categories(timeRange: lower...upper).then { categories in
       self.categories = categories
