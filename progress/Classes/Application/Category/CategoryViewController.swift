@@ -69,7 +69,7 @@ class CategoryViewController: UIViewController, ProgressContainerViewDelegate {
   // MARK: - Private
 
   private func updateUI() {
-    let rank = Points.rank(for: category.points)
+    let rank = category.rank
     labelRank.text = String(rank.rank)
     labelTitle.text = category.title
     progressView.set(rank: rank)

@@ -17,11 +17,14 @@ class PointsDataSourceImpl: PointsDataSource {
     }
   }
 
-  func categories() -> Promise<[Category]> {
+  func categories(timeRange: ClosedRange<Date>) -> Promise<[Category]> {
     realm.execute { realm in
       realm.objects(CategoryObject.self)
         .sorted(byKeyPath: "title")
-        .map { ObservableCategoryObject(object: $0) }
+        .map { categoryObject in
+//          let rank = RankFactory.make(events: categoryObject.rawEvents, timeRange: timeRange)
+          return ObservableCategoryObject(timeRange: timeRange, object: categoryObject)
+        }
     }
   }
 
@@ -118,7 +121,46 @@ class PointsDataSourceImpl: PointsDataSource {
   }
 }
 
+enum RankFactory {
+  static func make<Events: Collection>(
+    events: Events, timeRange: ClosedRange<Date>
+  ) -> Rank where Events.Element == EventObject {
+    let totalPoints = events.reduce(0, { $0 + $1.points })
+    var currentMax = 10
+    var pointsToNextLevel = currentMax
 
+    var rank = 1
+    var previousLevelPointCap = 0
+    while pointsToNextLevel <= totalPoints {
+      previousLevelPointCap = pointsToNextLevel
+      currentMax *= 2
+      pointsToNextLevel += currentMax
+      rank += 1
+    }
 
+    let pointsInTimeWindow = events
+      .filter { timeRange.contains($0.timestamp) }
+      .map { $0.points }
+      .reduce(0, +)
+    let pointsInLevel = max(totalPoints - previousLevelPointCap - pointsInTimeWindow, 0)
+    let ff = min(totalPoints - previousLevelPointCap, pointsInTimeWindow)
 
+    return Rank(
+      rank: rank,
+      pointsInLevel: pointsInLevel,
+      pointsInTimeWindow: ff,
+      pointsToNextLevel: currentMax,
+      totalPoints: totalPoints
+    )
+  }
+}
 
+//public class Points {
+//
+//  public static func startingRank() -> Rank {
+//    return Rank(rank: 1, points: 0, pointsInTimeWindow: nil, pointsToNextLevel: 10, totalPoints: 0)
+//  }
+//
+//  public static func rank(for totalPoints: Int) -> Rank {
+//  }
+//}

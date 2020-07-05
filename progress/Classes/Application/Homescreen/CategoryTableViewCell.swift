@@ -15,7 +15,7 @@ class CategoryTableViewCell: UITableViewCell, ProgressContainerViewDelegate {
   @IBOutlet weak var stackViewContent: UIStackView!
 
   func configure(_ category: PointsService.Category) {
-    let rank = Points.rank(for: category.points)
+    let rank = category.rank
     progressView.set(rank: rank)
     self.labelTitle.text = category.title
     self.labelRank.text = rank.display()

@@ -6,12 +6,17 @@ public protocol Category: Observable {
   var title: String { get }
   var events: [Event] { get }
   var rewards: [Reward] { get }
+  var rank: Rank { get }
 }
 
 extension Category {
-  public var points: Int {
+  public var totalPoints: Int {
     return events.reduce(0, { $0 + $1.points })
   }
+}
+
+public protocol TimeSlicedCategory: Category {
+  var additionalPoints: Int { get }
 }
 
 public protocol Event: Observable {
@@ -28,7 +33,7 @@ public protocol Reward: Observable {
 
 public protocol PointsDataSource {
   func createCategory(title: String) -> Promise<Void>
-  func categories() -> Promise<[Category]>
+  func categories(timeRange: ClosedRange<Date>) -> Promise<[Category]>
   func modifyCategory(title: String, category: Category) -> Promise<Void>
   func deleteCategory(_ category: Category) -> Promise<Void>
 

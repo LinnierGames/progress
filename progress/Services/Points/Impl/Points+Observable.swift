@@ -1,18 +1,28 @@
 import Foundation
 import ReactiveData
 
-typealias ObservableCategoryObject = ObservableRealmObject<CategoryObject>
-extension ObservableCategoryObject: Category {
-  public var title: String {
+class ObservableCategoryObject: ObservableRealmObject<CategoryObject>, Category {
+  var rank: Rank {
+    RankFactory.make(events: object.rawEvents, timeRange: timeRange)
+  }
+
+  var title: String {
     object.title
   }
 
-  public var rewards: [Reward] {
+  var rewards: [Reward] {
     object.rawRewards.map(ObservableRewardObject.init)
   }
 
-  public var events: [Event] {
+  var events: [Event] {
     object.rawEvents.sorted(byKeyPath: "timestamp", ascending: false).map(ObservableEventObject.init)
+  }
+
+  private let timeRange: ClosedRange<Date>
+
+  init(timeRange: ClosedRange<Date>, object: CategoryObject) {
+    self.timeRange = timeRange
+    super.init(object: object)
   }
 }
 

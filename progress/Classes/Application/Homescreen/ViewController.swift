@@ -44,7 +44,9 @@ class ViewController: UIViewController {
   }
 
   private func updateUI() {
-    pointsDataSource.categories().then { categories in
+    let lower = Date().midnight
+    let upper = Date().endOfDay
+    pointsDataSource.categories(timeRange: lower...upper).then { categories in
       self.categories = categories
       self.tableView.reloadData()
     }
@@ -106,9 +108,3 @@ extension ViewController: UIAdaptivePresentationControllerDelegate {
     viewWillAppear(true)
   }
 }
-
-
-
-
-
-

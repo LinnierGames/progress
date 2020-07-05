@@ -9,13 +9,14 @@ class ProgressContainerView: UIView, UIGestureRecognizerDelegate {
   let progressLabel = UILabel()
   @IBOutlet weak var delegate: ProgressContainerViewDelegate?
 
-  var progressColor: UIColor = .blue { didSet { updateUI() } }
-  var additionalProgressColor: UIColor = .green { didSet { updateUI() } }
+  var progressColor: UIColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1) { didSet { updateUI() } }
+  var progressColorInTimeRange: UIColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1) { didSet { updateUI() } }
+  var additionalProgressColor: UIColor = #colorLiteral(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 1) { didSet { updateUI() } }
 
   let contentLayoutGuide = UILayoutGuide()
 
   private let progressView: ProgressView
-  private var rank: Points.Rank = Points.startingRank()
+  private var rank: Rank?
 
   init() {
     self.progressView = ProgressView()
@@ -29,7 +30,7 @@ class ProgressContainerView: UIView, UIGestureRecognizerDelegate {
     commonInit()
   }
 
-  func set(rank: Points.Rank) {
+  func set(rank: Rank) {
     self.rank = rank
     updateProgress()
   }
@@ -84,22 +85,29 @@ class ProgressContainerView: UIView, UIGestureRecognizerDelegate {
     )
     panGesture.delegate = self
     self.addGestureRecognizer(panGesture)
+
+    updateUI()
   }
 
   private func updateUI() {
-    progressView.primaryColor = progressColor
-    progressView.secondaryColor = additionalProgressColor
+    progressView.progressBarColor1 = progressColor
+    progressView.progressBarColor2 = progressColorInTimeRange
+    progressView.progressBarColor3 = additionalProgressColor
   }
 
   private func updateProgress(pointsOffset: Int? = nil) {
+    guard let rank = rank else { return }
+
     self.progressLabel.text = rank.display()
-    progressView.progress = CGFloat(self.rank.points) / CGFloat(self.rank.pointsToNextLevel)
-    progressView.additionalProgress = CGFloat(pointsOffset ?? 0) / CGFloat(self.rank.pointsToNextLevel)
+    let points = rank.pointsInLevel + rank.pointsInTimeWindow
+    progressView.progress1 = CGFloat(rank.pointsInLevel) / CGFloat(rank.pointsToNextLevel)
+    progressView.progress2 = CGFloat(rank.pointsInTimeWindow) / CGFloat(rank.pointsToNextLevel)
+    progressView.progress3 = CGFloat(pointsOffset ?? 0) / CGFloat(rank.pointsToNextLevel)
 
     if let pointsOffset = pointsOffset {
-      self.progressLabel.text = "\(rank.points) +\(pointsOffset) / \(rank.pointsToNextLevel)"
+      self.progressLabel.text = "\(points) +\(pointsOffset) / \(rank.pointsToNextLevel)"
     } else {
-      self.progressLabel.text = "\(rank.points) / \(rank.pointsToNextLevel)"
+      self.progressLabel.text = "\(points) / \(rank.pointsToNextLevel)"
     }
   }
 
@@ -169,20 +177,19 @@ class ProgressContainerView: UIView, UIGestureRecognizerDelegate {
 }
 
 private class ProgressView: UIView {
-  var primaryColor = UIColor.blue { didSet { updateUI() } }
-  var secondaryColor = UIColor.green { didSet { updateUI() } }
-  var progress: CGFloat = 0.2 { didSet { updateUI() } }
-  var additionalProgress: CGFloat = 0.1 { didSet { updateUI() } }
+  var progressBarColor1 = UIColor.blue { didSet { updateUI() } }
+  var progressBarColor2 = UIColor.green { didSet { updateUI() } }
+  var progressBarColor3 = UIColor.green { didSet { updateUI() } }
+  var progress1: CGFloat = 0.2 { didSet { updateUI() } }
+  var progress2: CGFloat = 0.1 { didSet { updateUI() } }
+  var progress3: CGFloat = 0.1 { didSet { updateUI() } }
 
   override var frame: CGRect { didSet { updateUI() } }
   override var bounds: CGRect { didSet { updateUI() } }
 
-  private let progressBar = UIView()
-  private let additionalProgressBar = UIView()
-
-  override var intrinsicContentSize: CGSize {
-    return CGSize(width: 32, height: 32)
-  }
+  private let progressBar1 = UIView()
+  private let progressBar2 = UIView()
+  private let progressBar3 = UIView()
 
   init() {
     super.init(frame: .zero)
@@ -202,19 +209,26 @@ private class ProgressView: UIView {
   private func commonInit() {
     clipsToBounds = true
     backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-    addSubview(progressBar)
-    addSubview(additionalProgressBar)
+    addSubview(progressBar1)
+    addSubview(progressBar2)
+    addSubview(progressBar3)
   }
 
   private func updateUI() {
-    progressBar.backgroundColor = primaryColor
-    additionalProgressBar.backgroundColor = secondaryColor
+    progressBar1.backgroundColor = progressBarColor1
+    progressBar2.backgroundColor = progressBarColor2
+    progressBar3.backgroundColor = progressBarColor3
 
     // todo: max width is bounds.width
-    let progressBarWidth = bounds.width * progress
-    progressBar.frame = CGRect(x: 0, y: 0, width: progressBarWidth, height: bounds.height)
-    let additionalProgressBarWidth = bounds.width * additionalProgress
-    additionalProgressBar.frame =
-      CGRect(x: progressBarWidth, y: 0, width: additionalProgressBarWidth, height: bounds.height)
+    _ = [
+      (progressBar1, progress1),
+      (progressBar2, progress2),
+      (progressBar3, progress3),
+    ].reduce(0) { (xOffset: CGFloat, pair) in
+      let (view, progress) = pair
+      let progressBarWidth = bounds.width * progress
+      view.frame = CGRect(x: xOffset, y: 0, width: progressBarWidth, height: bounds.height)
+      return progressBarWidth + xOffset
+    }
   }
 }

@@ -25,3 +25,25 @@ extension Optional where Wrapped == String {
     return self.useIfEmpty(string)
   }
 }
+
+extension Date {
+  var midnight: Date {
+    let calendar = Calendar.current
+    var components = calendar.dateComponents([.hour, .minute, .second, .calendar], from: self)
+    components.hour = 0
+    components.minute = 0
+    components.second = 0
+
+    return components.date!
+  }
+
+  var endOfDay: Date {
+    let calendar = Calendar.current
+    var components = calendar.dateComponents([.hour, .minute, .second, .calendar], from: self)
+    components.hour = 23
+    components.minute = 59
+    components.second = 59
+
+    return components.date!
+  }
+}
