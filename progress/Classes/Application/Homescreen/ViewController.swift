@@ -3,11 +3,13 @@ import PointsService
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var buttonTimeWindow: UIButton!
   @IBOutlet private weak var tableView: UITableView!
 
-  var categories = [PointsService.Category]()
-
   private let pointsDataSource = injectPointsDataSource()
+
+  private var timeWindow = TimeWindow(windowSize: .day)
+  private var categories = [PointsService.Category]()
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -36,6 +38,32 @@ class ViewController: UIViewController {
 
   @IBAction func unwindToHomeScreen(unwindSegue: UIStoryboardSegue) {}
 
+  @IBAction func pressPreviousTimeWindow(_ sender: Any) {
+    timeWindow.previousWindow()
+    updateUI()
+  }
+
+  @IBAction func pressAdjustTimeWindowSize(_ sender: Any) {
+    let updateTimeWindowSize: (TimeWindow.WindowSize) -> Void = { newSize in
+      self.timeWindow.windowSize = newSize
+      self.updateUI()
+    }
+    let alertWindows = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+    TimeWindow.WindowSize.allCases.forEach { size in
+      alertWindows.addAction(UIAlertAction(title: size.display, style: .default) { _ in
+        updateTimeWindowSize(size)
+      })
+    }
+    alertWindows.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    present(alertWindows, animated: true)
+  }
+
+  @IBAction func pressNextTimeWindow(_ sender: Any) {
+    timeWindow.nextWindow()
+    updateUI()
+  }
+
   @IBAction func pressAddCategory(_ sender: Any) {
     let alert = UIAlertController.createCategory { title in
       self.createCategory(title: title.useIfEmpty("Untitled"))
@@ -44,11 +72,24 @@ class ViewController: UIViewController {
   }
 
   private func updateUI() {
-    let lower = Date(timeIntervalSinceNow: 60 * 60 * 24 * -7).midnight
-    let upper = Date().endOfDay
-    pointsDataSource.categories(timeRange: lower...upper).then { categories in
+    pointsDataSource.categories(timeRange: timeWindow.window).then { categories in
       self.categories = categories
       self.tableView.reloadData()
+    }
+
+    if case .day = timeWindow.windowSize {
+      let start = timeWindow.window.lowerBound
+      let startString = start.formattedStringWith(
+        formatter: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthNoPadding)
+      buttonTimeWindow.setTitle(startString, for: .normal)
+    } else {
+      let start = timeWindow.window.lowerBound
+      let end = timeWindow.window.upperBound
+      let startString = start.formattedStringWith(
+        formatter: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthNoPadding)
+      let endString = end.formattedStringWith(
+        formatter: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthNoPadding)
+      buttonTimeWindow.setTitle("\(startString) - \(endString)", for: .normal)
     }
   }
 

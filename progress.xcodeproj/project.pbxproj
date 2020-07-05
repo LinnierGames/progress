@@ -30,6 +30,8 @@
 		E153728524A7CBAE00BACA19 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = E149116F249FEAB3004B90AF /* Points.swift */; };
 		E153728624A7CBAE00BACA19 /* PointsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11693DC24A3D822005E1C0E /* PointsDataSource.swift */; };
 		E153728724A7CC1400BACA19 /* Points+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664F24A1A19F00B4AD07 /* Points+Realm.swift */; };
+		E1838CE124B25B26006479E1 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1838CE024B25B26006479E1 /* DateFormatter.swift */; };
+		E1838CE324B25C10006479E1 /* TimeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1838CE224B25C10006479E1 /* TimeWindow.swift */; };
 		E196664E24A1A18400B4AD07 /* UIAlertController+Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */; };
 		E1C1C9A324AF05C600870407 /* ProgressContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C1C9A224AF05C600870407 /* ProgressContainerView.swift */; };
 		E1C1C9B224AFA9B400870407 /* ReactiveData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C1C9A924AFA9B400870407 /* ReactiveData.framework */; };
@@ -167,6 +169,8 @@
 		E153727824A7CB7D00BACA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E153728824A7CD3C00BACA19 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E153728924A7CD3C00BACA19 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1838CE024B25B26006479E1 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		E1838CE224B25C10006479E1 /* TimeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWindow.swift; sourceTree = "<group>"; };
 		E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Progress.swift"; sourceTree = "<group>"; };
 		E196664F24A1A19F00B4AD07 /* Points+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Points+Realm.swift"; sourceTree = "<group>"; };
 		E1C1C9A224AF05C600870407 /* ProgressContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressContainerView.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				E1491171249FEB84004B90AF /* Extensions.swift */,
+				E1838CE024B25B26006479E1 /* DateFormatter.swift */,
 				E196664D24A1A18400B4AD07 /* UIAlertController+Progress.swift */,
 			);
 			path = CommonUI;
@@ -357,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				E153725924A7CA5300BACA19 /* Application */,
+				E1838CE424B25C19006479E1 /* Common */,
 				E153725C24A7CAAD00BACA19 /* CommonUI */,
 			);
 			path = Classes;
@@ -392,6 +398,14 @@
 				E153727824A7CB7D00BACA19 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		E1838CE424B25C19006479E1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E1838CE224B25C10006479E1 /* TimeWindow.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		E1C1C9AA24AFA9B400870407 /* ReactiveData */ = {
@@ -945,7 +959,9 @@
 				E149117624A06081004B90AF /* EventTableViewCell.swift in Sources */,
 				E1FBD46D249EB90C000BAFF1 /* ViewController.swift in Sources */,
 				E1491172249FEB84004B90AF /* Extensions.swift in Sources */,
+				E1838CE124B25B26006479E1 /* DateFormatter.swift in Sources */,
 				E149117424A05C09004B90AF /* CategoryViewController.swift in Sources */,
+				E1838CE324B25C10006479E1 /* TimeWindow.swift in Sources */,
 				E196664E24A1A18400B4AD07 /* UIAlertController+Progress.swift in Sources */,
 				E1FBD469249EB90C000BAFF1 /* AppDelegate.swift in Sources */,
 				E1FBD46B249EB90C000BAFF1 /* SceneDelegate.swift in Sources */,

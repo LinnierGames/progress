@@ -29,6 +29,7 @@ extension Optional where Wrapped == String {
 extension Date {
   var midnight: Date {
     let calendar = Calendar.current
+    return calendar.startOfDay(for: self)
     var components = calendar.dateComponents([.calendar, .timeZone, .month, .day, .year, .hour, .minute, .second], from: self)
     components.hour = 0
     components.minute = 0
@@ -45,5 +46,43 @@ extension Date {
     components.second = 59
 
     return components.date!
+  }
+
+  var startOfWeek: Date {
+    let gregorian = Calendar.current
+    let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+    return gregorian.date(byAdding: .day, value: 1, to: sunday)!
+  }
+
+  var endOfWeek: Date {
+    let gregorian = Calendar.current
+    let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!
+    return gregorian.date(byAdding: .day, value: 7, to: sunday)!
+//    let calendar = Calendar.current
+//    var startOfTheWeek: NSDate?
+//    var endOfWeek: NSDate!
+//    var interval: TimeInterval = 0
+//
+//    calendar.range
+//    calendar.rangeOfUnit(.WeekOfMonth, startDate: &startOfTheWeek, interval: &interval, forDate: NSDate())
+//    endOfWeek = startOfTheWeek!.dateByAddingTimeInterval(interval - 1)
+  }
+}
+
+extension TimeInterval {
+  init(minutes: Int) {
+    self = TimeInterval(minutes) * 60
+  }
+
+  init(hours: Int) {
+    self = TimeInterval(hours) * TimeInterval(minutes: 60)
+  }
+
+  init(days: Int) {
+    self = TimeInterval(days) * TimeInterval(hours: 24)
+  }
+
+  init(weeks: Int) {
+    self = TimeInterval(weeks) * TimeInterval(days: 7)
   }
 }
