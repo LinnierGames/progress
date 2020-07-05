@@ -143,13 +143,14 @@ enum RankFactory {
       .map { $0.points }
       .reduce(0, +)
     let pointsInLevel = max(totalPoints - previousLevelPointCap - pointsInTimeWindow, 0)
-    let ff = min(totalPoints - previousLevelPointCap, pointsInTimeWindow)
+    let pointsInTimeWindowToNextLevel = min(totalPoints - previousLevelPointCap, pointsInTimeWindow)
 
     return Rank(
       rank: rank,
       pointsInLevel: pointsInLevel,
-      pointsInTimeWindow: ff,
+      pointsInTimeWindow: pointsInTimeWindowToNextLevel,
       pointsToNextLevel: currentMax,
+      totalPointsInTimeWindow: pointsInTimeWindow,
       totalPoints: totalPoints
     )
   }

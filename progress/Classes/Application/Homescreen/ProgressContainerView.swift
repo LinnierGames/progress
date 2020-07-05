@@ -105,9 +105,9 @@ class ProgressContainerView: UIView, UIGestureRecognizerDelegate {
     progressView.progress3 = CGFloat(pointsOffset ?? 0) / CGFloat(rank.pointsToNextLevel)
 
     if let pointsOffset = pointsOffset {
-      self.progressLabel.text = "\(points) +\(pointsOffset) / \(rank.pointsToNextLevel)"
+      self.progressLabel.text = "\(points) +\(pointsOffset) / \(rank.pointsToNextLevel) +\(rank.totalPointsInTimeWindow)"
     } else {
-      self.progressLabel.text = "\(points) / \(rank.pointsToNextLevel)"
+      self.progressLabel.text = "\(points) / \(rank.pointsToNextLevel) +\(rank.totalPointsInTimeWindow)"
     }
   }
 

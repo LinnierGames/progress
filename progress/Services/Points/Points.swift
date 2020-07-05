@@ -4,6 +4,7 @@ public struct Rank {
   public let pointsInLevel: Int
   public let pointsInTimeWindow: Int
   public let pointsToNextLevel: Int
+  public let totalPointsInTimeWindow: Int
   public let totalPoints: Int
 
   public func display() -> String {
